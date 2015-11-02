@@ -2,10 +2,76 @@
 <html>
 <head>
 	<title>Notest</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-<h2>My Notest</h2>
-<script src="/js/lib/require.js"></script>
-<script src="/js/main.js"></script>
+	<div class="btn btn-add hoverrable" > <a href="#add">+</a></div>
+	<header>
+		<h1>My NotesAPP</h1>
+	</header>
+
+
+	<div id="mainCont"></div>
+
+	<!-- off  main wraper-->
+	<script data-main="js/main" src="js/lib/require.js"></script>
+
+
+	<!--  templates -->
+	<script id="noteItem" type="text/template" >
+		<a href="#note/<%=id %>">
+			<span class="title"><%= title %></span> 
+			<div class="descr"><%=description%></div>
+		</a>
+	</script>
+
+	<script id="noteList" type="text/template" >
+		<div class="card card-list">
+			<ul class="notesContentList"></ul>
+		</div>   
+		<div class="emptyContent"></div>
+	</script>
+
+
+	<script id="noteDetailsItem" type="text/template" >
+		<div class="card card-box hoverrable">
+			<div class="card-cont" > 
+				<h3 class="title"><%= title %></h3> 
+				<div> <%= description %> </div>
+			</div> 
+			<div class="card-action">
+				<a href="#note/<%=id %>/edit"> Edit </a>
+			</div>
+		</div>
+	</script>
+
+
+	<script id="editNoteItem" type="text/template" >
+	   <div class="card card-box hoverrable">
+	   <form class="submitForm">
+	    <div class="card-cont" > 
+		    <div class="form-line">
+		        <label>Title </label>
+			 	<input class="formTitle" name="title"	value="<%= title %>" />  </h3>
+			</div>
+
+			<div class="form-line">
+		         <label>descriotion </label>
+			     <textarea class= "formDescription"><%= description %>  </textarea>
+			</div>
+		</div>
+		<div class="card-action">
+		    <a href="#!" class="btn btn-submit" >Save</a>
+		</div>
+	   </form>
+	   </div>
+	</script>
+	<!--  templates off -->
+
+
+
+
+
+
 </body>
 </html>
