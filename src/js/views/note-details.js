@@ -1,3 +1,4 @@
+'use strict';
 define([ 
 	"jquery",
 	"underscore",
@@ -8,20 +9,32 @@ define([
 
 		var NotesDetailsView = Backbone.View.extend({
 
-			   template: _.template($("#noteDetailsItem").html()),
-		       initialize: function(){},
-		       render: function(){
-		         var html = this.template(this.model.toJSON());
-                 this.$el.append(html);
-		         return this;
-		       }
+			template: _.template($("#noteDetailsItem").html()),
 
+			events:{
+				'click .btn-delete': 'onDelete'
+			},
+			initialize: function(){},
+			render: function(){
+				var html = this.template(this.model.toJSON());
+				this.$el.append(html);
+				return this;
+			},
+			onDelete: function(e){
+				e.preventDefault();
+				var confirmation = window.confirm('Do you want to delete the note "' + this.model.title +'" ?');
+				if(confirmation ){
+					this.model.destroy();	
+					this.$el.html('<div class="alert"> Delete succesful</div>');
+					setTimeout(function(){ 
+						App.router.navigate('#', {trigger: true});
+					},1000)
+				}
 
+			}
 
-        });
-
-        return NotesDetailsView ;
-  
+		});
+		return NotesDetailsView ;
 
 });
 

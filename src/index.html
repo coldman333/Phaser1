@@ -34,13 +34,16 @@
 
 
 	<script id="noteDetailsItem" type="text/template" >
+
 		<div class="card card-box hoverrable">
+
 			<div class="card-cont" > 
 				<h3 class="title"><%= title %></h3> 
 				<div> <%= description %> </div>
 			</div> 
 			<div class="card-action">
 				<a href="#note/<%=id %>/edit"> Edit </a>
+				<a href="#!" class="btn btn-delete"> Delete </a>
 			</div>
 		</div>
 	</script>
@@ -56,7 +59,7 @@
 			</div>
 
 			<div class="form-line">
-		         <label>descriotion </label>
+		         <label>Descriotion </label>
 			     <textarea class= "formDescription"><%= description %>  </textarea>
 			</div>
 		</div>

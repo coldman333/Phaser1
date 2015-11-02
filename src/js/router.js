@@ -1,4 +1,4 @@
-
+'use strict';
 define([
  "jquery",
  "backbone",
@@ -35,30 +35,28 @@ define([
 
     },
     add: function (cid) {
+		var addNoteView = new EditNoteView({
+		model: new NoteModel()
+		});
+		this.appView.setViews(addNoteView);
 
-     var addNoteView = new EditNoteView({
-        model: new NoteModel()
-      });
-      this.appView.setViews(addNoteView);
+		addNoteView.on('form:submitted', function(formObj) {
 
+			if( this.collection.isEmpty() ){
+		    	formObj.id = 1;
+			} else {
+		    	formObj.id = _.max(this.collection.pluck('id')) + 1
+			}
 
-       addNoteView.on('form:submitted', function(formObj) {
-
-       	if( this.collection.isEmpty() ){
-             formObj.id = 1;
-       		} else {
-             formObj.id = _.max(this.collection.pluck('id')) + 1
-
-       	}
-     
-        var newNote = new NoteModel(formObj);
-          this.collection.add(newNote);
-          newNote.save();
-          App.router.navigate('#', {trigger: true});
-
-        }, this);
-
-   
+			var newNote = new NoteModel(formObj);
+			if (newNote.isValid()) {
+			      this.collection.add(newNote);
+			      newNote.save();
+			      App.router.navigate('#', {trigger: true});
+			} else {
+				 alert(newNote.validationError); // todo without alert
+			}
+		}, this);
     },
     note: function (note_id) {
 
@@ -70,21 +68,26 @@ define([
      
     },
     noteEdit: function (note_id) {
-      var note = this.collection.get(note_id);
-      var editNoteView = new EditNoteView({
-        model: note
-      });
-      this.appView.setViews(editNoteView);
-       editNoteView.on('form:submitted', function(formObj) {
-       
-          note.save(formObj);
-           App.router.navigate('#', {trigger: true});
+		var note = this.collection.get(note_id);
+		var editNoteView = new EditNoteView({
+			model: note
+		});
 
-       });
+		this.appView.setViews(editNoteView);
+
+		editNoteView.on('form:submitted', function(formObj) {
+
+			var modelError = note.save(formObj, {validate:true});
+			if (modelError) {
+				note.save(formObj);
+				App.router.navigate('#', {trigger: true});
+			} else {
+				alert(note.validationError);  // todo without alert
+			}
+		});
     }	
  });
 
-return Router;
- //Backbone.history.start();     
+return Router;   
 
 }); 
