@@ -20,8 +20,6 @@ define([
      } ,
 
      initialize: function(options) {
-     	console.log("router init");
-     	console.log(this);
         this.appView = options.view;
         this.collection = options.collection;
         this.collection.fetch();

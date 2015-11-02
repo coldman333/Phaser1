@@ -33,7 +33,7 @@ header {  background: #333; padding: 1em 5%; color: #ddd}
 .form-line  textarea { width: 100%;  font-size: 14px; padding: 7px; box-sizing:border-box; border:1px solid #999 }
 .form-line  textarea { height: 200px}
 
-.alert {  background-color: #26a69a; padding: 20px; text-align: center; color: #000}
+.alert {  background-color: #26a69a; color: #fff; padding: 20px; text-align: center; }
 .hoverrable:hover { transition: box-shadow .25s;box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);} 
 
 

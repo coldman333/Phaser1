@@ -22,7 +22,10 @@ define([
 			},
 			onDelete: function(e){
 				e.preventDefault();
-				var confirmation = window.confirm('Do you want to delete the note "' + this.model.title +'" ?');
+				
+				debugger;
+
+				var confirmation = window.confirm('Do you want to delete the note "' + this.model.get("title") +'" ?');
 				if(confirmation ){
 					this.model.destroy();	
 					this.$el.html('<div class="alert"> Delete succesful</div>');
