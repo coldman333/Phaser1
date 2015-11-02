@@ -3,6 +3,7 @@
 <head>
 	<title>Notest</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
 </head>
 <body>
 	<div class="btn btn-add hoverrable" > <a href="#add">+</a></div>
@@ -54,13 +55,13 @@
 	   <form class="submitForm">
 	    <div class="card-cont" > 
 		    <div class="form-line">
-		        <label>Title </label>
-			 	<input class="formTitle" name="title"	value="<%= title %>" />  </h3>
+		        <label for="title">Title </label>
+			 	<input class="formTitle" id="title" name="title"	value="<%= title %>" />  </h3>
 			</div>
 
 			<div class="form-line">
-		         <label>Descriotion </label>
-			     <textarea class= "formDescription"><%= description %>  </textarea>
+		         <label for="description">Descriotion </label>
+			     <textarea id="description" class= "formDescription"  name="description"><%= description %>  </textarea>
 			</div>
 		</div>
 		<div class="card-action">
