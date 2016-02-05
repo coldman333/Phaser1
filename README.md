@@ -1,3 +1,3 @@
 # Simple Note
 
-ADD/EDIT/DELETE  
+Pherser  game test 
